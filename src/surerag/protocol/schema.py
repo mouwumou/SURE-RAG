@@ -254,4 +254,9 @@ class EvidenceSufficiencyResult(BaseModel):
             raise ValueError(f"invalid answer label: {self.label}")
         if self.action not in ACTIONS:
             raise ValueError(f"invalid action: {self.action}")
+        expected_safe = self.label == "supported" and self.action == "answer"
+        if self.safe_to_answer != expected_safe:
+            raise ValueError(
+                "safe_to_answer must equal (label == 'supported' and action == 'answer')"
+            )
         return self
