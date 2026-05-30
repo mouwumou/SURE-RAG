@@ -1,0 +1,59 @@
+{
+  "description": "Synthetic precomputed support/refute/neutral scores for demonstrating SURE-RAG aggregation. These are not model predictions.",
+  "scores": {
+    "demo_supported_full": [
+      {
+        "claim_id": "c1",
+        "evidence_id": "e1",
+        "probs": {"support": 0.30, "refute": 0.05, "neutral": 0.65},
+        "pred": "neutral"
+      },
+      {
+        "claim_id": "c1",
+        "evidence_id": "e2",
+        "probs": {"support": 0.78, "refute": 0.05, "neutral": 0.17},
+        "pred": "support"
+      },
+      {
+        "claim_id": "c1",
+        "evidence_id": "e3",
+        "probs": {"support": 0.32, "refute": 0.05, "neutral": 0.63},
+        "pred": "neutral"
+      },
+      {
+        "claim_id": "c1",
+        "evidence_id": "e4",
+        "probs": {"support": 0.95, "refute": 0.03, "neutral": 0.02},
+        "pred": "support"
+      }
+    ],
+    "demo_insufficient_partial": [
+      {
+        "claim_id": "c1",
+        "evidence_id": "e1",
+        "probs": {"support": 0.28, "refute": 0.05, "neutral": 0.67},
+        "pred": "neutral"
+      },
+      {
+        "claim_id": "c1",
+        "evidence_id": "e2",
+        "probs": {"support": 0.26, "refute": 0.05, "neutral": 0.69},
+        "pred": "neutral"
+      }
+    ],
+    "demo_refuted_answer": [
+      {
+        "claim_id": "c1",
+        "evidence_id": "e1",
+        "probs": {"support": 0.05, "refute": 0.86, "neutral": 0.09},
+        "pred": "refute"
+      },
+      {
+        "claim_id": "c1",
+        "evidence_id": "e2",
+        "probs": {"support": 0.04, "refute": 0.93, "neutral": 0.03},
+        "pred": "refute"
+      }
+    ]
+  }
+}

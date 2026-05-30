@@ -1,0 +1,94 @@
+{
+  "examples": [
+    {
+      "id": "demo_supported_full",
+      "question": "Was the author of The Hobbit born earlier than the author of A Game of Thrones?",
+      "answer": "Yes",
+      "claims": [
+        {
+          "id": "c1",
+          "text": "The author of The Hobbit was born earlier than the author of A Game of Thrones."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e1",
+          "text": "The Hobbit was written by J.R.R. Tolkien.",
+          "rank": 1,
+          "score": 0.92
+        },
+        {
+          "id": "e2",
+          "text": "J.R.R. Tolkien was born in 1892.",
+          "rank": 2,
+          "score": 0.90
+        },
+        {
+          "id": "e3",
+          "text": "A Game of Thrones was written by George R. R. Martin.",
+          "rank": 3,
+          "score": 0.86
+        },
+        {
+          "id": "e4",
+          "text": "George R. R. Martin was born in 1948.",
+          "rank": 4,
+          "score": 0.85
+        }
+      ],
+      "expected_label": "supported"
+    },
+    {
+      "id": "demo_insufficient_partial",
+      "question": "Was the author of The Hobbit born earlier than the author of A Game of Thrones?",
+      "answer": "Yes",
+      "claims": [
+        {
+          "id": "c1",
+          "text": "The author of The Hobbit was born earlier than the author of A Game of Thrones."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e1",
+          "text": "The Hobbit was written by J.R.R. Tolkien.",
+          "rank": 1,
+          "score": 0.90
+        },
+        {
+          "id": "e2",
+          "text": "A Game of Thrones was written by George R. R. Martin.",
+          "rank": 2,
+          "score": 0.82
+        }
+      ],
+      "expected_label": "insufficient"
+    },
+    {
+      "id": "demo_refuted_answer",
+      "question": "Was the author of The Hobbit born earlier than the author of A Game of Thrones?",
+      "answer": "No",
+      "claims": [
+        {
+          "id": "c1",
+          "text": "The author of The Hobbit was not born earlier than the author of A Game of Thrones."
+        }
+      ],
+      "evidence": [
+        {
+          "id": "e1",
+          "text": "J.R.R. Tolkien, author of The Hobbit, was born in 1892.",
+          "rank": 1,
+          "score": 0.90
+        },
+        {
+          "id": "e2",
+          "text": "George R. R. Martin, author of A Game of Thrones, was born in 1948.",
+          "rank": 2,
+          "score": 0.88
+        }
+      ],
+      "expected_label": "refuted"
+    }
+  ]
+}
