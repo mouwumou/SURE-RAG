@@ -27,6 +27,22 @@ class RoutingPolicy(BaseModel):
     on_high_conflict: Action = "human_review"
     high_conflict_gte: float | None = None
 
+    @model_validator(mode="after")
+    def _reject_unsafe_answer_routes(self) -> RoutingPolicy:
+        unsafe_routes = {
+            "on_supported_below_threshold": self.on_supported_below_threshold,
+            "on_refuted": self.on_refuted,
+            "on_insufficient": self.on_insufficient,
+            "on_no_evidence": self.on_no_evidence,
+            "on_low_confidence": self.on_low_confidence,
+            "on_high_conflict": self.on_high_conflict,
+        }
+        answer_routes = [name for name, action in unsafe_routes.items() if action == "answer"]
+        if answer_routes:
+            joined = ", ".join(sorted(answer_routes))
+            raise ValueError(f"unsafe routing policy cannot set answer for: {joined}")
+        return self
+
     @model_validator(mode="before")
     @classmethod
     def _support_brief_shape(cls, data: Any) -> Any:

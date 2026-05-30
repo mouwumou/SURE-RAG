@@ -15,6 +15,7 @@ def test_toy_verifier_returns_valid_result() -> None:
     assert abs(sum(result.probs.as_ordered_list()) - 1.0) < 1e-9
     assert TOY_WARNING in result.warnings
     assert result.model.capabilities.three_way_label is True
+    assert result.safe_to_answer == (result.label == "supported" and result.action == "answer")
 
 
 def test_empty_evidence_returns_insufficient_without_exception() -> None:
@@ -23,5 +24,6 @@ def test_empty_evidence_returns_insufficient_without_exception() -> None:
     )
     assert result.label == "insufficient"
     assert result.action in {"retrieve_more", "abstain"}
+    assert result.safe_to_answer is False
     assert result.probs.insufficient == 1.0
     assert "NO_EVIDENCE" in result.reason_codes

@@ -152,7 +152,7 @@ class SureRAGVerifier:
             protocol_version=PROTOCOL_VERSION,
             id=parsed.id,
             label=label,
-            safe_to_answer=decision.action == "answer",
+            safe_to_answer=label == "supported" and decision.action == "answer",
             action=decision.action,
             probs=probs,
             confidence=confidence,

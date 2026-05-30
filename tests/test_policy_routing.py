@@ -1,3 +1,5 @@
+import pytest
+
 from surerag.core.policy import RoutingPolicy
 
 
@@ -38,3 +40,19 @@ def test_high_conflict_can_route_to_human_review() -> None:
         label="supported", confidence=0.9, selective_score=0.9, features={"conflict_score": 0.6}
     )
     assert decision.action == "human_review"
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "on_refuted",
+        "on_insufficient",
+        "on_no_evidence",
+        "on_low_confidence",
+        "on_supported_below_threshold",
+        "on_high_conflict",
+    ],
+)
+def test_unsafe_routes_cannot_be_configured_to_answer(field: str) -> None:
+    with pytest.raises(ValueError, match="unsafe routing policy"):
+        RoutingPolicy(**{field: "answer"})
